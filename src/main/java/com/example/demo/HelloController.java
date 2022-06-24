@@ -26,12 +26,14 @@ public class HelloController {
     public String hello2(InputStream dataStream,@RequestHeader("filename") String name) throws IOException {
         int s=0;
         int a=0;
-        File myObj = new File(name);
+        String name2="files/"+name;
+        File myObj = new File(name2);
+        myObj.getParentFile().mkdirs();
         if(myObj.exists()){
             myObj.delete();
         }
 
-        FileOutputStream out=new FileOutputStream(name);
+        FileOutputStream out=new FileOutputStream(name2);
 
 
         while (true){
