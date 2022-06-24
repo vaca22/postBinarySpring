@@ -18,7 +18,7 @@ public class HelloController {
         return "Hello World!";
     }
 
-    byte[] fuck=new byte[100];
+    byte[] fuck=new byte[1000];
 
     @ResponseBody
     @PostMapping("/post")
@@ -36,7 +36,7 @@ public class HelloController {
         while (true){
             a=dataStream.read(fuck);
             if(a>0){
-                if(a==100){
+                if(a==1000){
                     out.write(fuck);
                 }else{
                     out.write(fuck,0,a);
