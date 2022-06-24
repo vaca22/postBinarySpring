@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,15 +23,15 @@ public class HelloController {
 
     @ResponseBody
     @PostMapping("/post")
-    public String hello2(InputStream dataStream) throws IOException {
+    public String hello2(InputStream dataStream,@RequestHeader("filename") String name) throws IOException {
         int s=0;
         int a=0;
-        File myObj = new File("filename.txt");
+        File myObj = new File(name);
         if(myObj.exists()){
             myObj.delete();
         }
 
-        FileOutputStream out=new FileOutputStream("filename.txt");
+        FileOutputStream out=new FileOutputStream(name);
 
 
         while (true){
