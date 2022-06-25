@@ -19,7 +19,7 @@ public class HelloController {
         return "Hello World!";
     }
 
-    byte[] fuck=new byte[1000];
+    byte[] receiveTemp =new byte[1000];
 
     @ResponseBody
     @PostMapping("/post")
@@ -37,12 +37,12 @@ public class HelloController {
 
 
         while (true){
-            a=dataStream.read(fuck);
+            a=dataStream.read(receiveTemp);
             if(a>0){
                 if(a==1000){
-                    out.write(fuck);
+                    out.write(receiveTemp);
                 }else{
-                    out.write(fuck,0,a);
+                    out.write(receiveTemp,0,a);
                 }
                 s+=a;
             }else{
